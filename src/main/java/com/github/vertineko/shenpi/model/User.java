@@ -4,6 +4,15 @@ public class User {
     private int id;
     private String name;
     private String telephone;
+
+    public User(int id, String name, String telephone, String account, String password) {
+        this.id = id;
+        this.name = name;
+        this.telephone = telephone;
+        this.account = account;
+        this.password = password;
+    }
+
     private String account;
     private String password;
 
@@ -40,10 +49,12 @@ public class User {
     }
 
     public int getId() {
+
         return id;
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 }

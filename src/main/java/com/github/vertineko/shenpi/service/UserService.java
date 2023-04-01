@@ -1,6 +1,7 @@
 package com.github.vertineko.shenpi.service;
 
 import com.github.vertineko.shenpi.dao.UserDao;
+import com.github.vertineko.shenpi.model.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -29,5 +30,15 @@ public class UserService {
 
 
     }
+    public void regiseterService(String name,String telephone,String account,String password) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try(SqlSession sqlSession = sqlSessionFactory.openSession(true)){
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
+            User user = new User(1,name,telephone,account,password);
+            userDao.addUser(user);
+        }
+    }
+
 
 }
