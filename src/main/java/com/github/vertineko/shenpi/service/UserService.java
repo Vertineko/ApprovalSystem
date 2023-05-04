@@ -39,6 +39,18 @@ public class UserService {
             userDao.addUser(user);
         }
     }
+    public User findUserByAccount(String account) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try(SqlSession sqlSession = sqlSessionFactory.openSession(true)){
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
+            if(userDao.findUserByAccount(account) != null){
+                return userDao.findUserByAccount(account);
+            }else {
+                return null;
+            }
+        }
+    }
 
 
 }

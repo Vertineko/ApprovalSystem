@@ -16,9 +16,11 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        var username = request.getParameter("account");
+        HttpSession session = request.getSession();
+        var account = request.getParameter("account");
         var password = request.getParameter("password");
-        if(UserService.getUserService().loginService(username,password)){
+        if(UserService.getUserService().loginService(account,password)){
+            session.setAttribute("account",account);
             response.sendRedirect("/usermenu.jsp");
         }else {
             response.sendRedirect("/login.jsp");
