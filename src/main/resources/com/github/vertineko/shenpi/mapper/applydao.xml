@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.vertineko.shenpi.dao.ApplyDao">
+    <insert id="addApply">
+        insert into `course_approve`(`course_id`,`status`,`teacher1_id`,`teacher2_id`,`user_id`,`reason`)
+        values (#{course_id},#{status},#{teacher1_id},#{teacher2_id},#{user_id},#{reason})
+    </insert>
+    <select id="getApply">
+        select * from `course_approve` where course_id = #{course_id} and user_id = #{user_id} and status != 'FAILED'
+    </select>
+</mapper>
