@@ -9,14 +9,14 @@ public class Apply {
     private String reason;
     private int id;
 
-    public Apply(int course_id, Status status, int teacher1_id, int teacher2_id, int user_id, String reason,int id) {
+    public Apply(int course_id, Status status, int teacher1_id, int teacher2_id, int user_id, String reason) {
         this.course_id = course_id;
         this.status = status;
         this.teacher1_id = teacher1_id;
         this.teacher2_id = teacher2_id;
         this.user_id = user_id;
         this.reason = reason;
-        this.id = id;
+
     }
 
     public int getCourse_id() {

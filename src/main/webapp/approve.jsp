@@ -41,7 +41,7 @@
     </fieldset>
     <fieldset>
         申请理由：<input type="text" id="reason"><br/>
-        证明文件：<input type="file">
+        证明文件：<input type="file" id="file">
     </fieldset>
     <input type="button" value="提交" onclick="approve(<%=course.getId()%>,<%=user.getId()%>)">
 </body>

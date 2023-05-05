@@ -18,6 +18,7 @@
         <mapper resource="com/github/vertineko/shenpi/mapper/userdao.xml" />
         <mapper resource="com/github/vertineko/shenpi/mapper/coursedao.xml" />
         <mapper resource="com/github/vertineko/shenpi/mapper/applydao.xml" />
+        <mapper resource="com/github/vertineko/shenpi/mapper/filedao.xml" />
     </mappers>
 
 </configuration>
