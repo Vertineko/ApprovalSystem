@@ -1,6 +1,9 @@
 <%@ page import="com.github.vertineko.shenpi.service.CourseService" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.github.vertineko.shenpi.model.Course" %><%--
+<%@ page import="com.github.vertineko.shenpi.model.Course" %>
+<%@ page import="com.github.vertineko.shenpi.model.Apply" %>
+<%@ page import="com.github.vertineko.shenpi.service.ApplyService" %>
+<%@ page import="com.github.vertineko.shenpi.service.UserService" %><%--
   Created by IntelliJ IDEA.
   User: 11732
   Date: 2023/3/31
@@ -24,7 +27,8 @@
         <th>学分</th>
         <th>操作</th>
         <%
-            if(CourseService.getCourseService() != null){
+            var user_id = UserService.getUserService().findUserByAccount(request.getSession().getAttribute("account").toString()).getId();
+            if(CourseService.getCourseService().getAllCourse() != null){
                 List<Course> courses = CourseService.getCourseService().getAllCourse();
                 for(Course course : courses){
         %>
@@ -40,6 +44,40 @@
             }
         %>
     </table><hr/>
+    <h1>已申请课程列表</h1><hr/>
+    <table>
+        <th>审批流序号</th>
+        <th>课程序号</th>
+        <th>课程代码</th>
+        <th>课程名称</th>
+        <th>课程类别</th>
+        <th>学分</th>
+        <th>状态</th>
+        <th>操作</th>
+        <%
+            List<Apply> selectedApply = ApplyService.getApplyService().getSelectedApply(user_id);
+            if(selectedApply != null){
+            for(Apply apply : selectedApply){
+                Course course = CourseService.getCourseService().getCourseById(apply.getCourse_id());
 
+        %>
+            <tr>
+                <td><%=apply.getId()%></td>
+                <td><%=course.getId()%></td>
+                <td><%=course.getCode()%></td>
+                <td><%=course.getName()%></td>
+                <td><%=course.getCatalory()%></td>
+                <td><%=course.getCreadit()%></td>
+                <td><%=apply.getStatus()%></td>
+                <td><input type="button" value="查看详情"></td>
+            </tr>
+
+        <%
+                }
+            }
+        %>
+
+    </table><hr/>
+    <input class="btncenter" type="button" value="查看所有已申请记录" >
 </body>
 </html>

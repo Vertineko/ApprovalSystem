@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class ApplyService {
     private static ApplyService applyService = new ApplyService();
@@ -26,6 +27,7 @@ public class ApplyService {
             }
         }
     }
+
     public Apply getApply(int course_id , int user_id) throws IOException {
         InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
@@ -37,6 +39,31 @@ public class ApplyService {
             }else {
                 return null;
             }
+        }
+    }
+
+    public List<Apply> getSelectedApply(int user_id) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            if(applyDao.getSelectedApply(user_id) != null){
+                return applyDao.getSelectedApply(user_id);
+            }else {
+                return null;
+            }
+        }
+    }
+
+    public List<Apply> getApplyofClass_s1() throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            if(applyDao.getApplyofClass_s1() != null){
+                return applyDao.getApplyofClass_s1();
+            }
+            return null;
         }
     }
 }

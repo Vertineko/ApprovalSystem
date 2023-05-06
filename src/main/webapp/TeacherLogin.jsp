@@ -79,19 +79,17 @@
 <body>
 <div class="container">
   <div class="login-wrapper">
-    <div class="header">学生登录</div>
+    <div class="header">教师登录</div>
     <div class="form-wrapper">
-      <form action="/LoginServlet" method="post">
+      <form action="/TeacherLoginServlet" method="post">
       <input type="text" name="account" placeholder="username" class="input-item">
       <input type="password" name="password" placeholder="password" class="input-item">
       <input class="btn" type="submit" value="登 录">
       </form>
     </div>
     <div class="msg">
-      Don't have account?
-      <a href="/register.jsp">Sign up</a><br/>
       <a href="/adminlogin.jsp">管理员登录请点我</a><br/>
-      <a href="/TeacherLogin.jsp">教师登录请点我</a>
+      <a href="/login.jsp">学生登录请点我</a>
     </div>
   </div>
 </div>

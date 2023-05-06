@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.vertineko.shenpi.dao.TeacherDao">
+        <select id="getTeacher">
+            select * from `teacher` where account = #{account}
+        </select>
+        <select id="getSpeecherofClass">
+            select * from `teacher` where course_id in(
+                select id form `course_select` where id = #{course_id}
+                ) and role = 'SPEECHER'
+        </select>
+        <select id="getManageofClass">
+            select * from `teacher` where course_id in(
+                select id form `course_select` where id = #{course_id}
+                ) and role = 'MANAGE'
+        </select>
+</mapper>

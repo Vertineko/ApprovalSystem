@@ -7,20 +7,29 @@ public class Apply {
     private int teacher2_id;
     private int user_id;
     private String reason;
+    private String note;
     private int id;
 
-    public Apply(int course_id, Status status, int teacher1_id, int teacher2_id, int user_id, String reason) {
+    public Apply(int course_id, Status status, int teacher1_id, int teacher2_id, int user_id, String reason,String note) {
         this.course_id = course_id;
         this.status = status;
         this.teacher1_id = teacher1_id;
         this.teacher2_id = teacher2_id;
         this.user_id = user_id;
         this.reason = reason;
-
+        this.note = note;
     }
 
     public int getCourse_id() {
         return course_id;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public int getId() {
