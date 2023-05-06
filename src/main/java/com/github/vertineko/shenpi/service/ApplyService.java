@@ -66,4 +66,46 @@ public class ApplyService {
             return null;
         }
     }
+
+    public List<Apply> getApplyofClass_s2() throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            if(applyDao.getApplyofClass_s2() != null){
+                return applyDao.getApplyofClass_s2();
+            }
+            return null;
+        }
+    }
+
+    public Apply getApplyById(int id) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            if(applyDao.getApplyById(id) != null){
+                return applyDao.getApplyById(id);
+            }
+            return null;
+        }
+    }
+
+    public void removeApply(int id) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            applyDao.removeApply(id);
+        }
+    }
+
+    public void updateApply(Apply apply) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            applyDao.updateApply(apply);
+        }
+    }
 }

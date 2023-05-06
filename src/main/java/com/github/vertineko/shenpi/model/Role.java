@@ -1,5 +1,11 @@
 package com.github.vertineko.shenpi.model;
 
 public enum Role {
-    SPEECHER,MANAGE
+    SPEECHER,MANAGE;
+
+//    public Role(String str){
+//        chinese = str;
+//    }
+//
+//    public final String chinese;
 }

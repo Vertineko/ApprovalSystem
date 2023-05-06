@@ -16,4 +16,7 @@
                 select id form `course_select` where id = #{course_id}
                 ) and role = 'MANAGE'
         </select>
+        <select id="getTeacherById">
+            select * from `teacher` where id = #{id}
+        </select>
 </mapper>

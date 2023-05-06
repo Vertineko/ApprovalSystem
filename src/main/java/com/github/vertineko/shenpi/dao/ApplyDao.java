@@ -11,7 +11,9 @@ public interface ApplyDao {
     public List<Apply> getSelectedApply(int user_id);
     public List<Apply> getApplyofClass_s1();
     //获得第一审批阶段当前老师所管理课程的所有申请
-    public List<Apply> getApplyofClass_S2();
+    public List<Apply> getApplyofClass_s2();
     //获得第二审批阶段当前老师所管理课程的所有申请
     public void removeApply(int id);
+    public Apply getApplyById(int id);
+    public void updateApply(Apply apply);
 }

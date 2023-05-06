@@ -52,5 +52,15 @@ public class UserService {
         }
     }
 
-
+    public User findUserById(int id) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try(SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
+            if(userDao.findUserById(id) != null){
+                return userDao.findUserById(id);
+            }
+            return null;
+        }
+    }
 }

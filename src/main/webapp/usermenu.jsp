@@ -69,7 +69,7 @@
                 <td><%=course.getCatalory()%></td>
                 <td><%=course.getCreadit()%></td>
                 <td><%=apply.getStatus()%></td>
-                <td><input type="button" value="查看详情"></td>
+                <td><input type="button" value="查看详情" onclick="check(<%=apply.getId()%>)"></td>
             </tr>
 
         <%

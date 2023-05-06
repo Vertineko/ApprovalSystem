@@ -3,7 +3,8 @@
 <%@ page import="com.github.vertineko.shenpi.service.CourseService" %>
 <%@ page import="com.github.vertineko.shenpi.service.ApplyService" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.github.vertineko.shenpi.service.TeacherService" %><%--
+<%@ page import="com.github.vertineko.shenpi.service.TeacherService" %>
+<%@ page import="com.github.vertineko.shenpi.model.Role" %><%--
   Created by IntelliJ IDEA.
   User: 11732
   Date: 2023/5/6
@@ -29,13 +30,21 @@
         <th>状态</th>
         <th>操作</th>
         <%
+            List<Apply> selectedApply = null;
             var teacher_id = TeacherService.getTeacherService().getTeacher(request.getSession().getAttribute("account").toString()).getId();
-            List<Apply> selectedApply = ApplyService.getApplyService().getApplyofClass_s1();
+            var role = TeacherService.getTeacherService().getTeacher(request.getSession().getAttribute("account").toString()).getRole();
+            if(role.equals(Role.SPEECHER)){
+                selectedApply = ApplyService.getApplyService().getApplyofClass_s1();
+            }else if(role.equals(Role.MANAGE)){
+                selectedApply = ApplyService.getApplyService().getApplyofClass_s2();
+            }
+
             if(selectedApply != null){
                 for(Apply apply : selectedApply){
                     Course course = CourseService.getCourseService().getCourseById(apply.getCourse_id());
 
         %>
+
         <tr>
             <td><%=apply.getId()%></td>
             <td><%=course.getId()%></td>

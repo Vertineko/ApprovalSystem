@@ -19,13 +19,20 @@
                 on a.course_id=b.course_id and a.status='SUBMITTED'
             )
     </select>
-    <select id="getApplyofClass_S2">
+    <select id="getApplyofClass_s2">
         select * from `course_approve` where id in(
             select a.id from `course_approve` a inner join `teacher` b
             on a.course_id=b.course_id and a.status='PROCESSING_STAGE1'
         )
     </select>
     <delete id="removeApply">
-        delete from `apply` where id = #{id}
+        delete from `course_approve` where id = #{id}
     </delete>
+    <select id="getApplyById">
+        select * from `course_approve` where id = #{id}
+    </select>
+    <update id="updateApply">
+        update `course_approve` set `course_id`=#{course_id},`status`=#{status},`teacher1_id`=#{teacher1_id},`teacher2_id`=#{teacher2_id},`user_id`=#{user_id},`reason`=#{reason},`note`=#{note}
+        where id = #{id}
+    </update>
 </mapper>
