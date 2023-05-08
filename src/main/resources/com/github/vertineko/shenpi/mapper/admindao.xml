@@ -6,4 +6,7 @@
     <select id="getAdmin">
         select * from `admin` where username = #{username}
     </select>
+    <select id="getAllAdmin">
+        select * from `admin`
+    </select>
 </mapper>

@@ -9,4 +9,5 @@ public interface TeacherDao {
     public List<Teacher> getSpeecherofClass(int course_id);
     public List<Teacher> getManageofClass(int course_id);
     public Teacher getTeacherById(int id);
+    public List<Teacher> getAllTeacher();
 }

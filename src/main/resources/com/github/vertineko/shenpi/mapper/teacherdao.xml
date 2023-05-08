@@ -19,4 +19,7 @@
         <select id="getTeacherById">
             select * from `teacher` where id = #{id}
         </select>
+        <select id="getAllTeacher">
+            select * from `teacher`
+        </select>
 </mapper>

@@ -77,4 +77,15 @@ public class TeacherService {
 
     }
 
+    public List<Teacher> getAllTeacher() throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            TeacherDao teacherDao = sqlSession.getMapper(TeacherDao.class);
+            if(teacherDao.getAllTeacher() != null){
+                return teacherDao.getAllTeacher();
+            }
+            return null;
+        }
+    }
 }

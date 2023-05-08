@@ -20,7 +20,7 @@ public class ApplyServlet extends HttpServlet {
         if(ApplyService.getApplyService().getApply(course_id,user_id) != null){
             response.getWriter().print("{\"flag\":false}");
         }else {
-            Apply apply_in = new Apply(course_id, Status.SUBMITTED,-1,-1,user_id,reason,"");
+            Apply apply_in = new Apply(course_id, Status.SUBMITTED,-1,-1,user_id,reason,"无");
             ApplyService.getApplyService().addApply(apply_in);
             Apply apply_out = ApplyService.getApplyService().getApply(course_id, user_id);
             int id = apply_out.getId();

@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class AdminService {
     private static AdminService adminService = new AdminService();
@@ -36,6 +37,18 @@ public class AdminService {
             }else {
                 return null;
             }
+        }
+    }
+
+    public List<Admin> getAllAdmin() throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
+            if(adminDao.getAllAdmin() != null){
+                return adminDao.getAllAdmin();
+            }
+            return null;
         }
     }
 }

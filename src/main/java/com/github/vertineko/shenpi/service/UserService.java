@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class UserService {
     private static UserService userservice = new UserService();
@@ -63,4 +64,17 @@ public class UserService {
             return null;
         }
     }
+
+    public List<User> getAllUser() throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try(SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
+            if(userDao.getAllUser() != null){
+                return userDao.getAllUser();
+            }
+            return null;
+        }
+    }
+
 }
