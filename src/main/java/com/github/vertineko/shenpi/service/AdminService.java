@@ -51,4 +51,49 @@ public class AdminService {
             return null;
         }
     }
+
+    public void addAdmin(Admin admin) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
+            if(getAdmin(admin.getUsername()) == null){
+                adminDao.addAdmin(admin);
+            }
+        }
+    }
+
+    public Admin getAdminById(int id) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
+            if(adminDao.getAdminById(id) != null){
+                return adminDao.getAdminById(id);
+            }
+            return null;
+        }
+    }
+
+    public void delete(int id) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
+            if(adminDao.getAdminById(id) != null){
+                adminDao.delete(id);
+            }
+        }
+    }
+
+    public void modify(Admin admin) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
+            if(adminDao.getAdminById(admin.getId()) != null){
+                adminDao.modify(admin);
+            }
+        }
+    }
 }

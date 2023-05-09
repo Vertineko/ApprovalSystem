@@ -24,7 +24,6 @@ public class ApplyServlet extends HttpServlet {
             ApplyService.getApplyService().addApply(apply_in);
             Apply apply_out = ApplyService.getApplyService().getApply(course_id, user_id);
             int id = apply_out.getId();
-            System.out.println(id);
             response.getWriter().print("{\"flag\":true,\"id\":"+ id +"}");
         }
 

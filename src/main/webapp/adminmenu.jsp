@@ -17,6 +17,7 @@
 <html>
 <head>
     <title>管理员界面</title>
+    <script type="text/javascript" src="js/adminmenu.js"></script>
 </head>
 <body>
     <h1>学生列表</h1><hr/>
@@ -39,6 +40,7 @@
                 <td><input type="text" name="telephone"></td>
                 <td><input type="text" name="account"></td>
                 <td><input type="text" name="password"></td>
+                <td><input type="button" value="搜索"></td>
             </tr>
         </form>
         <%
@@ -52,18 +54,19 @@
             <td><%=user.getTelephone()%></td>
             <td><%=user.getAccount()%></td>
             <td><%=user.getPassword()%></td>
-            <td><input type="button" value="修改"></td>
-            <td><input type="button" value="删除"></td>
-            <td><input type="button" value="创建审批"></td>
+            <td><input type="button" value="修改" onclick="modify_stu(<%=user.getId()%>)"></td>
+            <td><input type="button" value="删除" onclick="deletestu(<%=user.getId()%>)"></td>
+            <td><input type="button" value="创建审批" onclick="create(<%=user.getId()%>)"></td>
         </tr>
         <%
                 }
             }
         %>
-        <tr>
-            <td><input type="button" value="新增"></td>
-        </tr>
+
     </table><hr/>
+    <tr>
+        <td><input type="button" value="新增" onclick="addstu()"></td>
+    </tr><hr/>
     <h1>教师列表</h1>
     <table>
         <tr>
@@ -86,7 +89,7 @@
                 <td><input type="text" name="role"></td>
                 <td><input type="text" name="account"></td>
                 <td><input type="text" name="password"></td>
-
+                <td><input type="button" value="搜索"></td>
 
             </tr>
         </form>
@@ -104,17 +107,19 @@
                 <td><%=teacher.getRole()%></td>
                 <td><%=teacher.getAccount()%></td>
                 <td><%=teacher.getPassword()%></td>
-                <td><input type="button" value="修改"></td>
-                <td><input type="button" value="删除"></td>
+                <td><input type="button" value="修改" onclick="modify_tch(<%=teacher.getId()%>)"></td>
+                <td><input type="button" value="删除" onclick="deletetch(<%=teacher.getId()%>)"></td>
             </tr>
         <%
                 }
             }
         %>
-        <tr>
-            <td><input type="button" value="新增"></td>
-        </tr>
+
     </table><hr/>
+    <tr>
+        <td><input type="button" value="新增" onclick="addtch()"></td>
+    </tr><hr/>
+    <h1>管理员列表</h1>
     <table>
         <tr>
             <th>ID</th>
@@ -128,6 +133,7 @@
                 <td><input type="text" name="id"></td>
                 <td><input type="text" name="username"></td>
                 <td><input type="text" name="password"></td>
+                <td><input type="button" value="搜索"></td>
             </tr>
         </form>
         <%
@@ -139,17 +145,18 @@
                 <td><%=admin.getId()%></td>
                 <td><%=admin.getUsername()%></td>
                 <td><%=admin.getPassword()%></td>
-                <td><input type="button" value="修改"></td>
-                <td><input type="button" value="删除"></td>
+                <td><input type="button" value="修改" onclick="modify_adm(<%=admin.getId()%>)"></td>
+                <td><input type="button" value="删除" onclick="deleteadm(<%=admin.getId()%>)"></td>
             </tr>
         <%
                 }
             }
         %>
-        <tr>
-            <td><input type="button" value="新增"></td>
-        </tr>
+
     </table><hr/>
+    <tr>
+        <td><input type="button" value="新增" onclick="addadm()"></td>
+    </tr><hr/>
     <a href="" >查看所有审批</a>
 </body>
 </html>

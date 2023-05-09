@@ -22,4 +22,15 @@
         <select id="getAllTeacher">
             select * from `teacher`
         </select>
+        <delete id="deleteTeacher">
+            delete from `teacher` where id = #{id}
+        </delete>
+        <update id="updateTeacher">
+            update `teacher` set name = #{name},telephone = #{telephone},role = #{role},course_id = #{course_id},account = #{account},password = #{password}
+            where id = #{id}
+        </update>
+        <insert id="addTeacher">
+            insert into `teacher`(`account`,`password`,`name`,`telephone`,`role`,`course_id`,`id`)
+            values (#{account},#{password},#{name},#{telephone},#{role},#{course_id},#{id})
+        </insert>
 </mapper>

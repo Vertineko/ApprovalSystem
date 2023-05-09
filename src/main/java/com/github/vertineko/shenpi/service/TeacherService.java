@@ -88,4 +88,37 @@ public class TeacherService {
             return null;
         }
     }
+
+    public void deleteTeacher(int id) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            TeacherDao teacherDao = sqlSession.getMapper(TeacherDao.class);
+            if(getTeacherById(id)!=null){
+                teacherDao.deleteTeacher(id);
+            }
+        }
+    }
+
+    public void updateTeacher(Teacher teacher) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            TeacherDao teacherDao = sqlSession.getMapper(TeacherDao.class);
+            if(getTeacherById(teacher.getId()) != null){
+                teacherDao.updateTeacher(teacher);
+            }
+        }
+    }
+
+    public void addTeacher(Teacher teacher) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            TeacherDao teacherDao = sqlSession.getMapper(TeacherDao.class);
+            if(getTeacher(teacher.getAccount()) == null){
+                teacherDao.addTeacher(teacher);
+            }
+        }
+    }
 }

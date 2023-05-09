@@ -36,7 +36,7 @@ public class UserService {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
         try(SqlSession sqlSession = sqlSessionFactory.openSession(true)){
             UserDao userDao = sqlSession.getMapper(UserDao.class);
-            User user = new User(1,name,telephone,account,password);
+            User user = new User(name,telephone,account,password);
             userDao.addUser(user);
         }
     }
@@ -77,4 +77,25 @@ public class UserService {
         }
     }
 
+    public void deleteUser(int id) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try(SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
+            if(findUserById(id) != null){
+                userDao.deleteUser(id);
+            }
+        }
+    }
+
+    public void modifyUser(User user) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try(SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            UserDao userDao = sqlSession.getMapper(UserDao.class);
+            if(findUserById(user.getId()) != null){
+                userDao.modifyUser(user);
+            }
+        }
+    }
 }

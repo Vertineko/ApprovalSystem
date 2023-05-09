@@ -5,8 +5,8 @@ public class User {
     private String name;
     private String telephone;
 
-    public User(int id, String name, String telephone, String account, String password) {
-        this.id = id;
+    public User( String name, String telephone, String account, String password) {
+
         this.name = name;
         this.telephone = telephone;
         this.account = account;
