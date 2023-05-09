@@ -20,6 +20,53 @@
     <script type="text/javascript" src="js/adminmenu.js"></script>
 </head>
 <body>
+    <h1>课程列表</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>课程代码</th>
+            <th>课程名</th>
+            <th>课程类别</th>
+            <th>学分</th>
+            <th>操作</th>
+            <th>操作</th>
+
+
+        </tr>
+        <form>
+            <tr>
+                <td><input type="text" name="id"></td>
+                <td><input type="text" name="code"></td>
+                <td><input type="text" name="name"></td>
+                <td><input type="text" name="catalory"></td>
+                <td><input type="text" name="creadit"></td>
+                <td><input type="button" value="搜索"></td>
+            </tr>
+        </form>
+        <%
+            List<Course> courses = CourseService.getCourseService().getAllCourse();
+            if(courses != null){
+                for(Course course : courses){
+        %>
+        <tr>
+            <td><%=course.getId()%></td>
+            <td><%=course.getCode()%></td>
+            <td><%=course.getName()%></td>
+            <td><%=course.getCatalory()%></td>
+            <td><%=course.getCreadit()%></td>
+            <td><input type="button" value="修改" onclick="modify_cou(<%=course.getId()%>)"></td>
+            <td><input type="button" value="删除" onclick="deletecou(<%=course.getId()%>)"></td>
+
+        </tr>
+        <%
+                }
+            }
+        %>
+
+    </table><hr/>
+    <tr>
+        <td><input type="button" value="新增" onclick="addcou()"></td>
+    </tr><hr/>
     <h1>学生列表</h1><hr/>
     <table>
         <tr>

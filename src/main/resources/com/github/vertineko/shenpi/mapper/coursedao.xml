@@ -9,4 +9,15 @@
     <select id="getCourseById">
         select * from `course_select` where id = #{id}
     </select>
+    <insert id="addCourse">
+        insert into `course_select`(`id`,`code`,`name`,`catalory`,`creadit`)
+        values (#{id},#{code},#{name},#{catalory},#{creadit})
+    </insert>
+    <update id="modify">
+        update `course_select` set code=#{code},name=#{name},catalory=#{catalory},creadit=#{creadit}
+        where id = #{id}
+    </update>
+    <delete id="delete">
+        delete from `course_select` where id = #{id}
+    </delete>
 </mapper>

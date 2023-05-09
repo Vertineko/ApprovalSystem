@@ -82,3 +82,32 @@ function modify_adm(id){
 function addadm(){
     window.location = "Addadm.jsp"
 }
+
+
+
+
+
+
+
+const deletecou = async(id) =>{
+    const data = new FormData()
+    data.set("id",id)
+    const res = await fetch("DeletecouServlet",{
+        method:"post",
+        body: new URLSearchParams(data)
+    })
+    const response = await res.json()
+    if(response.flag){
+        alert("删除成功！")
+        window.location.reload()
+    }else {
+        alert("删除失败！该用户已不存在！")
+        window.location.reload()
+    }
+}
+function modify_cou(id){
+    window.location = "modifycou.jsp?" + "id=" + id;
+}
+function addcou(){
+    window.location = "Addcou.jsp"
+}

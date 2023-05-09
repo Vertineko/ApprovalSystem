@@ -8,8 +8,8 @@ public class Course {
     private int creadit;
 
 
-    public Course(int id, String code, String name, String catalory, int creadit) {
-        this.id = id;
+    public Course( String code, String name, String catalory, int creadit) {
+
         this.code = code;
         this.name = name;
         this.catalory = catalory;
