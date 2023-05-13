@@ -1,6 +1,7 @@
 package com.github.vertineko.shenpi.dao;
 
 import com.github.vertineko.shenpi.model.Apply;
+import com.github.vertineko.shenpi.model.Status;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -16,4 +17,12 @@ public interface ApplyDao {
     public void removeApply(int id);
     public Apply getApplyById(int id);
     public void updateApply(Apply apply);
+    public List<Apply> getAllApply();
+    public List<Apply> getAllSelectedApply(@Param("user_id")int user_id,@Param("pageNum")int PageNum,@Param("pageNow")int PageNow);
+    public int getCountSelectedApply(int user_id);
+
+    public List<Apply> searchApply(@Param("user_id")String user_id,@Param("apply_id")String apply_id, @Param("course_id")String course_id, @Param("code")String code, @Param("name")String name, @Param("catalory")String catalory, @Param("creadit")String creadit, @Param("status")String status);
+    public List<Apply> getAllApprove(@Param("teacher_id") int teacher_id,@Param("pageNum") int pageNum,@Param("pageNow") int pageNow);
+    public List<Apply> searchApply2(@Param("teacher_id")String teacher_id,@Param("apply_id")String apply_id, @Param("course_id")String course_id, @Param("code")String code, @Param("name")String name, @Param("catalory")String catalory, @Param("creadit")String creadit, @Param("status")String status);
+    public int getCountSelectedApprove(int teacher_id);
 }

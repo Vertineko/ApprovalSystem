@@ -22,7 +22,7 @@ const approve = async(course_id,user_id) => {
             body:data2,
         })
         const response2 = await res2.json()
-        if(response1.flag && response2.flag){
+        if(response2.flag){
             alert("申请已提交！")
             window.location = "adminmenu.jsp"
         }else{

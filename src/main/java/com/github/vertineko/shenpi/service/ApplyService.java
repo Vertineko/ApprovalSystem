@@ -2,6 +2,7 @@ package com.github.vertineko.shenpi.service;
 
 import com.github.vertineko.shenpi.dao.ApplyDao;
 import com.github.vertineko.shenpi.model.Apply;
+import com.github.vertineko.shenpi.model.Status;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -106,6 +107,85 @@ public class ApplyService {
         try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
             ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
             applyDao.updateApply(apply);
+        }
+    }
+
+    public List<Apply> getAllApply() throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            if(applyDao.getAllApply() != null){
+                return applyDao.getAllApply();
+            }
+            return null;
+        }
+    }
+
+    public List<Apply> getAllSelectedApply(int id,int pageNum,int pageNow) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            if(applyDao.getAllSelectedApply(id,pageNum,pageNow) != null){
+                return applyDao.getAllSelectedApply(id,pageNum,pageNow);
+            }
+            return null;
+        }
+
+    }
+
+    public int getCountSelectedApply(int user_id) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            return applyDao.getCountSelectedApply(user_id);
+        }
+    }
+    public List<Apply> searchApply (String user_id,String apply_id, String course_id, String code, String name, String catalory, String creadit, String status) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            if(applyDao.searchApply(user_id,apply_id,course_id,code,name,catalory,creadit,status) != null){
+                return applyDao.searchApply(user_id,apply_id,course_id,code,name,catalory,creadit,status);
+            }
+            return null;
+        }
+    }
+
+    public List<Apply> getAllApprove(int teacher_id,int pageNum,int pageNow) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            if(applyDao.getAllApprove(teacher_id, pageNum, pageNow) != null){
+                return applyDao.getAllApprove(teacher_id, pageNum, pageNow);
+            }
+            return null;
+        }
+    }
+
+    public List<Apply> searchApply2 (String teacher_id,String apply_id, String course_id, String code, String name, String catalory, String creadit, String status) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);{
+                if(applyDao.searchApply2(teacher_id,apply_id,course_id,code,name,catalory,creadit,status) != null){
+                    return applyDao.searchApply2(teacher_id,apply_id,course_id,code,name,catalory,creadit,status);
+                }
+                return null;
+            }
+        }
+    }
+
+    public int getCountSelectedApprove(int teacher_id) throws IOException{
+        InputStream config = Resources.getResourceAsStream("com/github/vertineko/shenpi/mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(config);
+        try (SqlSession sqlSession = sqlSessionFactory.openSession(true)) {
+            ApplyDao applyDao = sqlSession.getMapper(ApplyDao.class);
+            return applyDao.getCountSelectedApprove(teacher_id);
         }
     }
 }

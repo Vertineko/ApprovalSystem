@@ -33,16 +33,16 @@
 
 
         </tr>
-        <form>
-            <tr>
-                <td><input type="text" name="id"></td>
-                <td><input type="text" name="code"></td>
-                <td><input type="text" name="name"></td>
-                <td><input type="text" name="catalory"></td>
-                <td><input type="text" name="creadit"></td>
-                <td><input type="button" value="搜索"></td>
-            </tr>
-        </form>
+<%--        <form>--%>
+<%--            <tr>--%>
+<%--                <td><input type="text" name="id"></td>--%>
+<%--                <td><input type="text" name="code"></td>--%>
+<%--                <td><input type="text" name="name"></td>--%>
+<%--                <td><input type="text" name="catalory"></td>--%>
+<%--                <td><input type="text" name="creadit"></td>--%>
+<%--                <td><input type="button" value="搜索"></td>--%>
+<%--            </tr>--%>
+<%--        </form>--%>
         <%
             List<Course> courses = CourseService.getCourseService().getAllCourse();
             if(courses != null){
@@ -80,16 +80,16 @@
             <th>操作</th>
 
         </tr>
-        <form>
-            <tr>
-                <td><input type="text" name="id"></td>
-                <td><input type="text" name="name"></td>
-                <td><input type="text" name="telephone"></td>
-                <td><input type="text" name="account"></td>
-                <td><input type="text" name="password"></td>
-                <td><input type="button" value="搜索"></td>
-            </tr>
-        </form>
+<%--        <form>--%>
+<%--            <tr>--%>
+<%--                <td><input type="text" name="id"></td>--%>
+<%--                <td><input type="text" name="name"></td>--%>
+<%--                <td><input type="text" name="telephone"></td>--%>
+<%--                <td><input type="text" name="account"></td>--%>
+<%--                <td><input type="text" name="password"></td>--%>
+<%--                <td><input type="button" value="搜索"></td>--%>
+<%--            </tr>--%>
+<%--        </form>--%>
         <%
             List<User> users = UserService.getUserService().getAllUser();
             if(users != null){
@@ -127,19 +127,19 @@
             <th>操作</th>
             <th></th>
         </tr>
-        <form>
-            <tr>
-                <td><input type="text" name="id"></td>
-                <td><input type="text" name="name"></td>
-                <td><input type="text" name="coursename"></td>
-                <td><input type="text" name="telephone"></td>
-                <td><input type="text" name="role"></td>
-                <td><input type="text" name="account"></td>
-                <td><input type="text" name="password"></td>
-                <td><input type="button" value="搜索"></td>
+<%--        <form>--%>
+<%--            <tr>--%>
+<%--                <td><input type="text" name="id"></td>--%>
+<%--                <td><input type="text" name="name"></td>--%>
+<%--                <td><input type="text" name="coursename"></td>--%>
+<%--                <td><input type="text" name="telephone"></td>--%>
+<%--                <td><input type="text" name="role"></td>--%>
+<%--                <td><input type="text" name="account"></td>--%>
+<%--                <td><input type="text" name="password"></td>--%>
+<%--                <td><input type="button" value="搜索"></td>--%>
 
-            </tr>
-        </form>
+<%--            </tr>--%>
+<%--        </form>--%>
         <%
             List<Teacher> teachers = TeacherService.getTeacherService().getAllTeacher();
             if(teachers != null){
@@ -175,14 +175,14 @@
             <th>操作</th>
             <th>操作</th>
         </tr>
-        <form>
-            <tr>
-                <td><input type="text" name="id"></td>
-                <td><input type="text" name="username"></td>
-                <td><input type="text" name="password"></td>
-                <td><input type="button" value="搜索"></td>
-            </tr>
-        </form>
+<%--        <form>--%>
+<%--            <tr>--%>
+<%--                <td><input type="text" name="id"></td>--%>
+<%--                <td><input type="text" name="username"></td>--%>
+<%--                <td><input type="text" name="password"></td>--%>
+<%--                <td><input type="button" value="搜索"></td>--%>
+<%--            </tr>--%>
+<%--        </form>--%>
         <%
             List<Admin> admins = AdminService.getAdminService().getAllAdmin();
             if(admins != null){
@@ -204,6 +204,6 @@
     <tr>
         <td><input type="button" value="新增" onclick="addadm()"></td>
     </tr><hr/>
-    <a href="" >查看所有审批</a>
+    <a href="AllApply.jsp" >查看所有审批</a>
 </body>
 </html>

@@ -78,6 +78,6 @@
         %>
 
     </table><hr/>
-    <input class="btncenter" type="button" value="查看所有已申请记录" >
+    <input class="btncenter" type="button" value="查看所有已申请记录" onclick="allapply(<%=user_id%>)">
 </body>
 </html>

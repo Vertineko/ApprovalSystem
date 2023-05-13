@@ -27,4 +27,6 @@
         update `user` set name=#{name},telephone=#{telephone},account=#{account},password=#{password}
         where id=#{id}
     </update>
+
+
 </mapper>

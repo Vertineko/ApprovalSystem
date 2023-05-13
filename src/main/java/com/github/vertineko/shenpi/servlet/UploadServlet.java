@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 @WebServlet(name = "UploadServlet", value = "/UploadServlet")
-@MultipartConfig(maxFileSize = 16177215)
+@MultipartConfig(maxFileSize = 4194304)
 public class UploadServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,8 +28,10 @@ public class UploadServlet extends HttpServlet {
                 byte[] bytes = inputStream.readAllBytes();
                 Exfile file = new Exfile(apply_id,type,bytes);
                 if(FileService.getFileService().getFile(apply_id) != null){
+                    System.out.println("false");
                     response.getWriter().print("{\"flag\":false}");
                 }else {
+                    System.out.println("true");
                     FileService.getFileService().addFile(file);
                     response.getWriter().print("{\"flag\":true}");
                 }

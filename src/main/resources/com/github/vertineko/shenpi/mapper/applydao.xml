@@ -35,4 +35,94 @@
         update `course_approve` set `course_id`=#{course_id},`status`=#{status},`teacher1_id`=#{teacher1_id},`teacher2_id`=#{teacher2_id},`user_id`=#{user_id},`reason`=#{reason},`note`=#{note}
         where id = #{id}
     </update>
+    <select id="getAllApply">
+        select * from `course_approve`
+    </select>
+
+    <select id="getAllSelectedApply">
+        select * from `course_approve` where user_id = #{user_id}
+        limit #{pageNum},#{pageNow}
+    </select>
+
+    <select id="getCountSelectedApply">
+        select count(*) from `course_approve` where user_id = #{user_id}
+    </select>
+
+    <select id="searchApply">
+        select *
+        from `course_approve` a inner join `course_select` b on
+            a.course_id = b.id
+        where
+            a.user_id = #{user_id}
+        <if test="apply_id!=null and apply_id!=''">
+            and a.id like concat(concat('%',#{apply_id}),'%')
+        </if>
+
+        <if test="course_id!=null and course_id!=''">
+            and a.course_id like concat(concat('%',#{course_id}),'%')
+        </if>
+
+        <if test="code!=null and code!=''">
+            and b.code like concat(concat('%',#{code}),'%')
+        </if>
+
+        <if test="name!=null and name!=''">
+            and b.name like concat(concat('%',#{name}),'%')
+        </if>
+
+        <if test="catalory!=null and catalory!=''">
+            and b.catalory like concat(concat('%',#{catalory}),'%')
+        </if>
+
+        <if test="creadit!=null and creadit!=''">
+            and b.creadit like concat(concat('%',#{creadit}),'%')
+        </if>
+
+        <if test="status!=null and status!=''">
+            and a.status like concat(concat('%',#{status}),'%')
+        </if>
+    </select>
+
+    <select id="getAllApprove">
+        select * from `course_approve` where (teacher1_id = #{teacher_id} or teacher2_id = #{teacher_id})
+        limit #{pageNum},#{pageNow}
+    </select>
+
+    <select id="searchApply2">
+        select *
+        from `course_approve` a inner join `course_select` b on
+        a.course_id = b.id
+        where
+        a.teacher1_id = #{teacher_id} or a.teacher2_id = #{teacher_id}
+        <if test="apply_id!=null and apply_id!=''">
+            and a.id like concat(concat('%',#{apply_id}),'%')
+        </if>
+
+        <if test="course_id!=null and course_id!=''">
+            and a.course_id like concat(concat('%',#{course_id}),'%')
+        </if>
+
+        <if test="code!=null and code!=''">
+            and b.code like concat(concat('%',#{code}),'%')
+        </if>
+
+        <if test="name!=null and name!=''">
+            and b.name like concat(concat('%',#{name}),'%')
+        </if>
+
+        <if test="catalory!=null and catalory!=''">
+            and b.catalory like concat(concat('%',#{catalory}),'%')
+        </if>
+
+        <if test="creadit!=null and creadit!=''">
+            and b.creadit like concat(concat('%',#{creadit}),'%')
+        </if>
+
+        <if test="status!=null and status!=''">
+            and a.status like concat(concat('%',#{status}),'%')
+        </if>
+    </select>
+    <select id="getCountSelectedApprove">
+        select count(*) from `course_approve` where teacher1_id = #{teacher_id} or teacher2_id = #{teacher_id}
+    </select>
 </mapper>

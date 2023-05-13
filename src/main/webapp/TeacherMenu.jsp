@@ -19,7 +19,7 @@
     <script type="text/javascript" src="js/TeacherMenu.js"></script>
 </head>
 <body>
-    <h1>待审核表</h1>
+    <h1>待审核表</h1><hr/>
     <table>
         <th>审批流序号</th>
         <th>课程序号</th>
@@ -63,5 +63,6 @@
         %>
 
     </table><hr/>
+<input type="button" value="查看所有已审批申请" onclick="approve(<%=teacher_id%>)">
 </body>
 </html>

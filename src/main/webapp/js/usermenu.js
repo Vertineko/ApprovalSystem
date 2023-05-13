@@ -7,4 +7,7 @@ function check(apply_id){
     const desturl = "details.jsp?" + "apply_id=" + apply_id;
     window.location = desturl;
 }
-
+function allapply(user_id){
+    const desturl = "ShowAllApply.jsp?" + "user_id=" + user_id + "&" + "page=" + 1
+    window.location.href = desturl;
+}
