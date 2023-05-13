@@ -39,7 +39,7 @@
     </fieldset>
     <fieldset>
         申请理由：<%=apply.getReason()%><br/>
-        证明文件：<br/>
+        证明文件：<img src="FileServlet?id=<%=apply_id%>"/><br/>
         教师留言：<%=apply.getNote()%>
     </fieldset>
     <fieldset>

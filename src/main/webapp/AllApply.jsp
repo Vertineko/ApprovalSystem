@@ -13,6 +13,34 @@
 <html>
 <head>
     <title>审批记录</title>
+    <script>
+        const exportExcel = async() => {
+            const res = await fetch("ExportServlet",{
+                method:"get",
+            })
+            const response = await res.json()
+            if(response.flag){
+                let str = `课程id,备注（教师）,理由（学生）,学生id,主讲老师id,主管老师id,申请表序号,状态\n`;
+                for(let i = 0;i < response.applies.length;i++){
+                    for(let item in response.applies[i]){
+                        str+= response.applies[i][item] + ",";
+                    }
+                    str+='\n';
+                    console.log(str)
+                }
+                let uri = 'data:text/csv;charset=utf-8,\ufeff' + encodeURIComponent(str);
+                var link = document.createElement("a");
+                link.href = uri;
+                link.download =  "审批表.csv";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }else{
+                alert("导出失败")
+                return
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>审批记录</h1><hr/>
@@ -51,6 +79,6 @@
         %>
 
     </table><hr/>
-    <input type="button" value="导出">
+    <input type="button" value="导出" onclick="exportExcel()">
 </body>
 </html>

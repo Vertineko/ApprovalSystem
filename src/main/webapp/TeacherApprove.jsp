@@ -41,7 +41,7 @@
   </fieldset>
   <fieldset>
     申请理由：<%=apply.getReason()%><br/>
-    证明文件：<%=file.getFile()%>
+    证明文件：<img src="FileServlet?id=<%=apply_id%>" />
 </fieldset>
     备注：<textarea id="note" type="textarea" placeholder="若驳回申请，请填入理由" rols="5" cols="50"></textarea><br/>
 <input type="button" value="同意" onclick="approve(1,<%=teacher_id%>,<%=apply_id%>,'<%=role%>')">
