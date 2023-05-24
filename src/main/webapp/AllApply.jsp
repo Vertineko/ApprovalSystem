@@ -23,6 +23,7 @@
                 let str = `课程id,备注（教师）,理由（学生）,学生id,主讲老师id,主管老师id,申请表序号,状态\n`;
                 for(let i = 0;i < response.applies.length;i++){
                     for(let item in response.applies[i]){
+                        <%--str+=`${response.applies[i][item] + '\t'},`--%>
                         str+= response.applies[i][item] + ",";
                     }
                     str+='\n';
